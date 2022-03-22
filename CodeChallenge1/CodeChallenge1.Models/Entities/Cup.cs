@@ -17,7 +17,6 @@ namespace CodeChallenge1.Models.Entities
 
         public Cup(CupAddVM src)
         {
-            Id = src.Id;
             HasBall = src.HasBall;
         }
 
