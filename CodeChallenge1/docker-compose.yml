@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  mktfy.api:
+    image: ${DOCKER_REGISTRY-}codechalenge1api
+    container_name: "codechallenge1.api"
+    build:
+      context: .
+      dockerfile: CodeChallenge1.API/Dockerfile
+    ports:
+      - "35000:80"
+      - "35001:443"
+    depends_on:
+      - codechallenge1.db
+
+  codechallenge1.db:
+    restart: on-failure
+    image: "postgis/postgis:14-3.1-alpine"
+    container_name: "codechallenge1.db"
+    environment: 
+      - POSTGRES_USER=devdbuser
+      - POSTGRES_DB=devdb
+      - POSTGRES_PASSWORD=devdbpassword
+    volumes:
+      - codechallenge1-db:/var/lib/postgresql/data
+    ports:
+      - "35010:5432"
+
+volumes:
+  codechallenge1-db: 
