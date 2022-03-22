@@ -26,6 +26,6 @@ namespace CodeChallenge1.Models.Entities
 
         // Boolean for whether cup has the ball or not
         [Required]
-        public Boolean HasBall { get; set; }
+        public Boolean HasBall { get; set; } = false;
     }
 }

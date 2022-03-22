@@ -18,12 +18,58 @@ namespace CodeChallenge1.Repositories.Repositories
             _context = context;
         }
 
-        public void Create(Cup entity)
+        public async Task<List<Cup>> Setup()
         {
-            // Perform the add in-memory
-            _context.Add(entity);
-        }
+            // Get current cup entities
+            var oldCups = await _context.Cups.ToListAsync();
+            // Delete all cups
+            foreach (var cup in oldCups)
+            {
+                _context.Remove(cup);
+            }
 
+            // Initialize new cups
+            List<Cup> newCups = new List<Cup>();
+
+            Cup cupA = new Cup();
+            Cup cupB = new Cup();
+            Cup cupC = new Cup();
+
+            cupB.HasBall = true;
+
+            // Add cups to list
+            newCups.Add(cupA);
+            newCups.Add(cupB);
+            newCups.Add(cupC);
+
+            // Save cups in-memory
+            _context.Add(newCups);
+
+            // Return new cup list
+            return newCups;
+
+        }
+        public async Task<List<Cup>> Swap(Cup start, Cup end)
+        {
+            // Get cup list
+            var oldCups = await _context.Cups.ToListAsync();
+
+            // Use temporary cup to swap ball status of given cups
+            Cup tempCup = new Cup();
+
+            tempCup.HasBall = end.HasBall;
+            end.HasBall = start.HasBall;
+            start.HasBall = tempCup.HasBall;
+
+            // Update new cup statuses
+            foreach (var cup in oldCups)
+            {
+                _context.Update(cup);
+            }
+
+            // Return updated cup list
+            return oldCups;
+        }
         public async Task<Cup> GetById(int id)
         {
             // Get the entity
@@ -32,24 +78,10 @@ namespace CodeChallenge1.Repositories.Repositories
             // Return the result
             return result;
         }
-
-        public async Task<List<Cup>> GetAll()
-        {
-            // Get all entities
-            var results = await _context.Cups.ToListAsync();
-
-            // Return the results
-            return results;
-        }
         public void Update(Cup entity)
         {
             // Update the entity
             _context.Update(entity);
-        }
-        public void Delete(Cup entity)
-        {
-            // Delete the entity
-            _context.Remove(entity);
         }
     }
 }

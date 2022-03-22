@@ -18,72 +18,47 @@ namespace CodeChallenge1.Services.Services
         {
             _uow = uow;
         }
-        public async Task<CupVM> Create(CupAddVM src)
-        {
-            var newEntity = new Cup(src);
 
-            // Have the repository create the new game
-            _uow.Cups.Create(newEntity);
+        public async Task<List<CupVM>> Setup()
+        {
+            // Run setup routine for cups and save changes
+            var results = await _uow.Cups.Setup();
             await _uow.SaveAsync();
 
-            // Create CupVM to return
-            var model = new CupVM(newEntity);
-
-            // Return the CupVM
-            return model;
-        }
-
-        public async Task Delete(int id)
-        {
-            // Get the entity
-            var result = await _uow.Cups.GetById(id);
-
-            // Delete the requested cup entity
-            _uow.Cups.Delete(result);
-            await _uow.SaveAsync();
-        }
-
-        public async Task<List<CupVM>> GetAll()
-        {
-            // Get entity list
-            var results = await _uow.Cups.GetAll();
-
-            // Create CupVM from entity list
+            // Create list of CupVMs
             var models = results.Select(item => new CupVM(item)).ToList();
 
             // Return CupVM list
             return models;
         }
-
-        public async Task<CupVM> GetById(int id)
+        public async Task<List<CupVM>> Swap(CupUpdateVM start, CupUpdateVM end)
         {
-            // Get entity with given id
-            var result = await _uow.Cups.GetById(id);
+            // Get start cup entity by id
+            var cup1 = await _uow.Cups.GetById(start.Id);
 
-            // Create CupVM from entity
-            var model = new CupVM(result);
+            // Update the ball status of start cup
+            cup1.HasBall = start.HasBall;
 
-            // Return the CupVM
-            return model;
-        }
+            // Get end cup entity by id
+            var cup2 = await _uow.Cups.GetById(end.Id);
 
-        public async Task<CupVM> Update(CupUpdateVM src)
-        {
-            // Get cup entity by id
-            var entity = await _uow.Cups.GetById(src.Id);
-
-            // Update the ball status
-            entity.HasBall = src.HasBall;
+            // Update the ball status of end cup
+            cup2.HasBall = end.HasBall;
 
             // Save updates
-            _uow.Cups.Update(entity);
+            _uow.Cups.Update(cup1);
+            _uow.Cups.Update(cup2);
+
             await _uow.SaveAsync();
 
-            // Make CupVM from entity
-            var model = new CupVM(entity);
+            // Make CupVMs from entities
+            var models = new List<CupVM>();
+            models.Add(new CupVM(cup1));
+            models.Add(new CupVM(cup2));
 
-            // Return the CupVM
-            return model;
+            // Return the CupVM list
+            return models;
         }
+        
     }
 }

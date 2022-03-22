@@ -9,10 +9,9 @@ namespace CodeChallenge1.Repositories.Repositories.Interfaces
 {
     public interface ICupRepository
     {
-        void Create(Cup entity);
+        Task<List<Cup>> Setup();
+        Task<List<Cup>> Swap(Cup start, Cup end);
         Task<Cup> GetById(int id);
-        Task<List<Cup>> GetAll();
         void Update(Cup entity);
-        void Delete(Cup entity);
     }
 }

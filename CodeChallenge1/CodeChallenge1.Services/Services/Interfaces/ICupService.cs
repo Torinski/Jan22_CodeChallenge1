@@ -9,10 +9,8 @@ namespace CodeChallenge1.Services.Services.Interfaces
 {
     public interface ICupService
     {
-        Task<CupVM> Create(CupAddVM src);         // Create a new cup
-        Task<CupVM> GetById(int id);              // Get cup by id
-        Task<List<CupVM>> GetAll();               // Get all cups
-        Task<CupVM> Update(CupUpdateVM entity);   // Update cup
-        Task Delete(int id);                      // Delete cup
+        Task<List<CupVM>> Setup();
+        Task<List<CupVM>> Swap(CupUpdateVM start, CupUpdateVM end);
+        
     }
 }

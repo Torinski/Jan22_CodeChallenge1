@@ -16,8 +16,4 @@
     <ProjectReference Include="..\CodeChallenge1.Repositories\CodeChallenge1.Repositories.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Interfaces\" />
-  </ItemGroup>
-
 </Project>

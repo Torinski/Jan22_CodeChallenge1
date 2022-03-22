@@ -18,8 +18,4 @@
     <ProjectReference Include="..\CodeChallenge1.Models\CodeChallenge1.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\Interfaces\" />
-  </ItemGroup>
-
 </Project>
