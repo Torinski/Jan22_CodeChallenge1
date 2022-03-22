@@ -53,7 +53,9 @@ namespace CodeChallenge1.API.Controllers
                 //    CupVM start = cupList[0];
                 //    if 
                 //}
+                
             }
+            return cupList[1];
         }
     }
 }

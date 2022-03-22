@@ -19,7 +19,7 @@ namespace CodeChallenge1.Models.ViewModels
             HasBall = src.HasBall;
         }
 
-        public int Id { get; set; }
+        public char Id { get; set; }
         public Boolean HasBall { get; set; }
     }
 }

@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CodeChallenge1.Repositories.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220322023829_Initial")]
-    partial class Initial
+    [Migration("20220322051718_Initial2")]
+    partial class Initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,11 +25,11 @@ namespace CodeChallenge1.Repositories.Migrations
 
             modelBuilder.Entity("CodeChallenge1.Models.Entities.Cup", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<char>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("character(1)");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<char>("Id"));
 
                     b.Property<bool>("HasBall")
                         .HasColumnType("boolean");

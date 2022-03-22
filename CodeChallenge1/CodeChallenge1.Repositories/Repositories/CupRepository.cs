@@ -31,11 +31,9 @@ namespace CodeChallenge1.Repositories.Repositories
             // Initialize new cups
             List<Cup> newCups = new List<Cup>();
 
-            Cup cupA = new Cup();
-            Cup cupB = new Cup();
-            Cup cupC = new Cup();
-
-            cupB.HasBall = true;
+            Cup cupA = new Cup('A', false);
+            Cup cupB = new Cup('B', true);
+            Cup cupC = new Cup('C', false);
 
             // Add cups to list
             newCups.Add(cupA);
@@ -70,7 +68,7 @@ namespace CodeChallenge1.Repositories.Repositories
             // Return updated cup list
             return oldCups;
         }
-        public async Task<Cup> GetById(int id)
+        public async Task<Cup> GetById(char id)
         {
             // Get the entity
             var result = await _context.Cups.FirstAsync(cup => cup.Id == id);

@@ -20,9 +20,15 @@ namespace CodeChallenge1.Models.Entities
             HasBall = src.HasBall;
         }
 
+        public Cup(char id, bool hasball)
+        {
+            Id = id;
+            HasBall = hasball;
+        }
+
         // Using int for Id tag, there are only ever 3 cups
         [Key]
-        public int Id { get; set; }
+        public char Id { get; set; }
 
         // Boolean for whether cup has the ball or not
         [Required]

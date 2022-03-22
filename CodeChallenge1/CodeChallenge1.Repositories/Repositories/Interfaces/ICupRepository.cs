@@ -11,7 +11,7 @@ namespace CodeChallenge1.Repositories.Repositories.Interfaces
     {
         Task<List<Cup>> Setup();
         Task<List<Cup>> Swap(Cup start, Cup end);
-        Task<Cup> GetById(int id);
+        Task<Cup> GetById(char id);
         void Update(Cup entity);
     }
 }
