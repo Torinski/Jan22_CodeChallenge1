@@ -1,4 +1,6 @@
 using CodeChallenge1.Repositories;
+using CodeChallenge1.Services.Services;
+using CodeChallenge1.Services.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 void ConfigureHost(ConfigureHostBuilder host)
@@ -21,8 +23,8 @@ void ConfigureServices(WebApplicationBuilder builder)
         );
 
     // Dependency injections
-    //builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-    //builder.Services.AddScoped<ICupService, CupService>();
+    builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+    builder.Services.AddScoped<ICupService, CupService>();
 }
 
 // Set up the HTTP request and response pipeline
