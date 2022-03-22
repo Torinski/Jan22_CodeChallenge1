@@ -1,8 +1,8 @@
 version: '3.4'
 
 services:
-  mktfy.api:
-    image: ${DOCKER_REGISTRY-}codechalenge1api
+  codechallenge1.api:
+    image: ${DOCKER_REGISTRY-}codechallenge1api
     container_name: "codechallenge1.api"
     build:
       context: .
@@ -10,6 +10,8 @@ services:
     ports:
       - "35000:80"
       - "35001:443"
+    environment: 
+      - ConnectionStrings__DefaultConnection=Server=codechallenge1.db;Database=devdb;User Id=devdbuser;password=devdbpassword
     depends_on:
       - codechallenge1.db
 
