@@ -71,5 +71,20 @@ Array[string] (required): An array of "swaps" (each of which is a two-letter str
     "CupId": C,
     "HasBall":true
 }
+
+// Using non-string inputs
+BadRequest: "Swaps are not all string values."
+
+// Using swaps ["ab"]
+BadRequest: "Not all swap characters are upper case."
+
+// Using swap ["A"] or ["ABC"]
+BadRequest: "Entered swap has too few, or too many, characters."
+
+// Using swap ["AA"]
+BadRequest: "Cannot swap cup with itself."
+
+// Using swap ["AD"]
+BadRequest: "One of the input characters was not 'A', 'B', or 'C'"
 ```
 
