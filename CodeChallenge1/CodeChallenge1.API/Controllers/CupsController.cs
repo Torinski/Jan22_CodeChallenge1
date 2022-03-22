@@ -58,7 +58,7 @@ namespace CodeChallenge1.API.Controllers
             { 
                 if (cup.HasBall == true)
                 {
-                    return await _cupService.GetById(cup.Id);
+                    return await _cupService.GetById(cup.CupId);
                 }
             }
             return BadRequest("Something went wrong. No cup contains the ball.");

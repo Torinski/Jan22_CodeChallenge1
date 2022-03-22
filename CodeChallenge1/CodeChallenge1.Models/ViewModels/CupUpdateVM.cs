@@ -10,7 +10,10 @@ namespace CodeChallenge1.Models.ViewModels
     public class CupUpdateVM
     {
         [Required]
-        public char Id { get; set; }
+        public int Id { get; set; }
+
+        [Required]
+        public char CupId   { get; set; }
 
         [Required]
         public Boolean HasBall { get; set; }

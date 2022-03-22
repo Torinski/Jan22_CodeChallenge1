@@ -22,13 +22,17 @@ namespace CodeChallenge1.Models.Entities
 
         public Cup(char id, bool hasball)
         {
-            Id = id;
+            CupId = id;
             HasBall = hasball;
         }
 
         // Using int for Id tag, there are only ever 3 cups
         [Key]
-        public char Id { get; set; }
+        public int Id { get; set; }
+
+        // Property to correlate cup to character value
+        [Required]
+        public char CupId { get; set; }
 
         // Boolean for whether cup has the ball or not
         [Required]

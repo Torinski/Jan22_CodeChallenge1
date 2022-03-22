@@ -71,7 +71,7 @@ namespace CodeChallenge1.Repositories.Repositories
         public async Task<Cup> GetById(char id)
         {
             // Get the entity
-            var result = await _context.Cups.FirstAsync(cup => cup.Id == id);
+            var result = await _context.Cups.FirstAsync(cup => cup.CupId == id);
 
             // Return the result
             return result;

@@ -34,13 +34,13 @@ namespace CodeChallenge1.Services.Services
         public async Task<List<CupVM>> Swap(CupVM start, CupVM end)
         {
             // Get start cup entity by id
-            var cup1 = await _uow.Cups.GetById(start.Id);
+            var cup1 = await _uow.Cups.GetById(start.CupId);
 
             // Update the ball status of start cup
             cup1.HasBall = start.HasBall;
 
             // Get end cup entity by id
-            var cup2 = await _uow.Cups.GetById(end.Id);
+            var cup2 = await _uow.Cups.GetById(end.CupId);
 
             // Update the ball status of end cup
             cup2.HasBall = end.HasBall;

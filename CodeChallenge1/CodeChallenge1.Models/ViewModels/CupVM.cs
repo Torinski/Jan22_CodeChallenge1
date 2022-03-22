@@ -16,10 +16,12 @@ namespace CodeChallenge1.Models.ViewModels
         public CupVM(Entities.Cup src)
         {
             Id = src.Id;
+            CupId = src.CupId;
             HasBall = src.HasBall;
         }
 
-        public char Id { get; set; }
+        public int Id { get; set; }
+        public char CupId { get; set; }
         public Boolean HasBall { get; set; }
     }
 }

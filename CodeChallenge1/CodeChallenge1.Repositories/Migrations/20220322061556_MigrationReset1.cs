@@ -5,7 +5,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace CodeChallenge1.Repositories.Migrations
 {
-    public partial class Initial2 : Migration
+    public partial class MigrationReset1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,9 @@ namespace CodeChallenge1.Repositories.Migrations
                 name: "Cups",
                 columns: table => new
                 {
-                    Id = table.Column<char>(type: "character(1)", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CupId = table.Column<char>(type: "character(1)", nullable: false),
                     HasBall = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
