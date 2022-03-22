@@ -31,7 +31,7 @@ namespace CodeChallenge1.Services.Services
             // Return CupVM list
             return models;
         }
-        public async Task<List<CupVM>> Swap(CupUpdateVM start, CupUpdateVM end)
+        public async Task<List<CupVM>> Swap(CupVM start, CupVM end)
         {
             // Get start cup entity by id
             var cup1 = await _uow.Cups.GetById(start.Id);
@@ -59,6 +59,18 @@ namespace CodeChallenge1.Services.Services
             // Return the CupVM list
             return models;
         }
-        
+
+        public async Task<CupVM> GetById(char id)
+        {
+            // Get entity with given id
+            var result = await _uow.Cups.GetById(id);
+
+            // Create CupVM from entity
+            var model = new CupVM(result);
+
+            // Return the CupVM
+            return model;
+        }
+
     }
 }

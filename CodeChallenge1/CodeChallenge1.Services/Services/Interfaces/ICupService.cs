@@ -10,7 +10,7 @@ namespace CodeChallenge1.Services.Services.Interfaces
     public interface ICupService
     {
         Task<List<CupVM>> Setup();
-        Task<List<CupVM>> Swap(CupUpdateVM start, CupUpdateVM end);
-        
+        Task<List<CupVM>> Swap(CupVM start, CupVM end);
+        Task<CupVM> GetById(char id);
     }
 }

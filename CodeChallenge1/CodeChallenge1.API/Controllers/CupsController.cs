@@ -48,14 +48,20 @@ namespace CodeChallenge1.API.Controllers
                         return BadRequest("One of the input characters was not 'A', 'B', or 'C'");
                     }
                 }
-                //if (chars[0] == 'A' || chars[1] == 'A')
-                //{
-                //    CupVM start = cupList[0];
-                //    if 
-                //}
-                
+                CupVM start = await _cupService.GetById(chars[0]);
+                CupVM end = await _cupService.GetById(chars[1]);
+
+                cupList = await _cupService.Swap(start, end);
+
             }
-            return cupList[1];
+            foreach (var cup in cupList)
+            { 
+                if (cup.HasBall == true)
+                {
+                    return await _cupService.GetById(cup.Id);
+                }
+            }
+            return BadRequest("Something went wrong. No cup contains the ball.");
         }
     }
 }
